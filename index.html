@@ -1,402 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentry Steps | Enterprise Workforce Compliance & Telemetry Systems</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-main: #0B0F19;
-            --bg-card: #151B2C;
-            --accent-blue: #2563EB;
-            --accent-glow: #3B82F6;
-            --text-main: #F3F4F6;
-            --text-muted: #9CA3AF;
-            --border-color: #1E293B;
-            --alert-red: #EF4444;
-            --radius: 12px;
-            --font-stack: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<title>ProofLog | Enterprise Workforce Compliance & Telemetry Systems</title>
 
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            font-family: var(--font-stack);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        /* Header Navigation */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 8%;
-            border-bottom: 1px solid var(--border-color);
-            background: rgba(11, 15, 25, 0.8);
-            backdrop-filter: blur(12px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
+<style>
+:root {
+    --bg-main: #0B0F19;
+    --bg-card: #151B2C;
+    --accent-blue: #2563EB;
+    --accent-emerald: #10B981;
+    --text-main: #F3F4F6;
+    --text-muted: #9CA3AF;
+    --border-color: #1E293B;
+    --font-stack: 'Plus Jakarta Sans', Arial, sans-serif;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 1.4rem;
-            letter-spacing: -0.025em;
-        }
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-stack);
+    letter-spacing: -0.01em;
+}
 
-        .logo-shield {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-glow));
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        }
+/* Premium Navbar Layout */
+.navbar {
+    background: rgba(11, 15, 25, 0.85) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color) !important;
+    transition: all 0.3s ease;
+}
 
-        nav {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #FFFFFF 50%, var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-            font-size: 0.95rem;
-        }
+.nav-link {
+    color: var(--text-muted) !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
 
-        nav a:hover {
-            color: var(--text-main);
-        }
+.nav-link:hover {
+    color: #FFFFFF !important;
+}
 
-        .btn-nav {
-            background-color: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 10px 20px;
-            border-radius: var(--radius);
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
+/* Hero Component Wrapper */
+.hero {
+    background: radial-gradient(circle at top right, rgba(37, 99, 219, 0.08), transparent 45%),
+                radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.03), transparent 50%);
+    padding: 160px 0 100px 0;
+}
 
-        .btn-nav:hover {
-            border-color: var(--accent-glow);
-            background: rgba(59, 130, 246, 0.05);
-        }
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+    background: linear-gradient(to right, #FFFFFF, #D1D5DB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-        /* Hero Section */
-        .hero {
-            padding: 180px 8% 100px 8%;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+/* Core Buttons */
+.btn-primary-pro {
+    background: linear-gradient(135deg, var(--accent-blue), #3B82F6);
+    color: #FFFFFF;
+    border: none;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(37, 99, 219, 0.25);
+    transition: all 0.2s ease;
+}
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            line-height: 1.15;
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            margin-bottom: 24px;
-            background: linear-gradient(to right, #FFFFFF, #9CA3AF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+.btn-primary-pro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(37, 99, 219, 0.4);
+    color: #FFFFFF;
+}
 
-        .hero-content p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            max-width: 540px;
-        }
+.btn-outline-pro {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
 
-        .cta-group {
-            display: flex;
-            gap: 16px;
-        }
+.btn-outline-pro:hover {
+    border-color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.03);
+    color: #FFFFFF;
+}
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-glow));
-            color: #FFFFFF;
-            border: none;
-            padding: 16px 32px;
-            border-radius: var(--radius);
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(37, 99, 219, 0.3);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+/* Metric Strip Component */
+.metric-strip {
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 50px 0;
+}
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(37, 99, 219, 0.4);
-        }
+.metric h2 {
+    font-weight: 800;
+    font-size: 2.2rem;
+    letter-spacing: -0.03em;
+    color: var(--accent-emerald);
+}
 
-        /* Mockup Dashboard Preview Component */
-        .mockup-container {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-            position: relative;
-        }
+.metric p {
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 0;
+}
 
-        .mockup-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 16px;
-        }
+/* Enterprise Feature Cards */
+.section-padding {
+    padding: 100px 0;
+}
 
-        .window-dots {
-            display: flex;
-            gap: 6px;
-        }
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
 
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--border-color);
-        }
-        .dot.red { background-color: var(--alert-red); }
+.feature-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 40px 30px;
+    height: 100%;
+    transition: all 0.3s ease;
+}
 
-        .mockup-badge {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid var(--alert-red);
-            color: var(--alert-red);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            animation: pulse 2s infinite;
-        }
+.feature-card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-4px);
+}
 
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
-        }
+.feature-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba(37, 99, 219, 0.1);
+    color: var(--accent-blue);
+    border-radius: 8px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    border: 1px solid rgba(37, 99, 219, 0.2);
+}
 
-        .mockup-data-row {
-            background: rgba(11, 15, 25, 0.5);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 16px;
-            margin-bottom: 12px;
-        }
+/* Interactive Component Simulator (Carousel Wrapper) */
+.carousel-inner {
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
 
-        .mockup-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 4px;
-        }
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(11, 15, 25, 0.9);
+    padding: 24px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background-size: 45%;
+}
 
-        .mockup-value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-main);
-        }
+/* Form Hardening Details */
+.form-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 45px;
+}
 
-        /* Engineering Grid Features */
-        .features {
-            padding: 100px 8%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+.form-control-pro {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: #FFFFFF !important;
+    padding: 14px;
+    border-radius: 8px;
+}
 
-        .section-lead {
-            text-align: center;
-            margin-bottom: 80px;
-        }
+.form-control-pro:focus {
+    background-color: var(--bg-main);
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 4px rgba(37, 99, 219, 0.15);
+}
 
-        .section-lead h2 {
-            font-size: 2.5rem;
-            letter-spacing: -0.03em;
-            margin-bottom: 16px;
-        }
-
-        .section-lead p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 32px;
-        }
-
-        .feature-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 32px;
-            transition: border-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            border-color: var(--accent-glow);
-            transform: translateY(-4px);
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent-glow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 24px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .feature-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 12px;
-            letter-spacing: -0.02em;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Footer Layer */
-        footer {
-            border-top: 1px solid var(--border-color);
-            padding: 40px 8%;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 968px) {
-            .hero {
-                grid-template-columns: 1fr;
-                padding-top: 140px;
-                text-align: center;
-            }
-            .hero-content p { margin: 0 auto 40px auto; }
-            .cta-group { justify-content: center; }
-            header { padding: 20px 4%; }
-            nav { display: none; } /* Kept simple for raw clean UI */
-        }
-    </style>
+/* Footer Section */
+.footer {
+    background-color: #06080E;
+    border-top: 1px solid var(--border-color);
+    padding: 60px 0;
+    color: var(--text-muted);
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <div class="logo">
-            <div class="logo-shield"></div>
-            <span>Sentry Steps</span>
-        </div>
-        <nav>
-            <a href="#features">Architecture</a>
-            <a href="mailto:ahmed@sentrysteps.com">Contact Operations</a>
-            <a href="https://app.sentrysteps.com" class="btn-nav">Launch ProofLog</a>
-        </nav>
-    </header>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+<div class="container">
+    <a class="navbar-brand" href="#">PROOFLOG</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link px-3" href="#features">Platform Features</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="#architecture">System Architecture</a></li>
+            <li class="nav-item me-3"><a class="nav-link px-3" href="#contact">Contact Operations</a></li>
+            <li class="nav-item"><a href="https://app.sentrysteps.com" class="btn btn-primary-pro py-2 px-4 fs-6">Launch Console</a></li>
+        </ul>
+    </div>
+</div>
+</nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Automated Guard Compliance Management</h1>
-            <p>ProofLog eliminates contract SLA penalties, service delivery blind spots, and manual shift tracking vulnerabilities through real-time geospatial telemetry processing.</p>
-            <div class="cta-group">
-                <a href="https://app.sentrysteps.com" class="btn-primary">Launch Enterprise Console</a>
+<section class="hero">
+<div class="container">
+    <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+            <h1 class="mb-4">Real-Time Workforce Compliance Processing</h1>
+            <p class="lead text-secondary mb-4 fs-5" style="line-height: 1.7;">
+                ProofLog tracks and mitigates operational risk across multi-site field guard infrastructures. Monitor attendance, enforce live geofencing criteria, and resolve schedule gaps through automated telemetry alerts.
+            </p>
+            <div class="d-flex gap-3 mt-4">
+                <a href="#contact" class="btn btn-primary-pro btn-lg px-4">Request Demo</a>
+                <a href="#features" class="btn btn-outline-pro btn-lg px-4">Technical Overview</a>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center">
+            <img src="dashboard1.png" alt="ProofLog Operations Center" class="img-fluid rounded-4 border border-secondary shadow-lg" onerror="this.src='https://placehold.co/600x420/151b2c/ffffff?text=ProofLog+Operations+Control+Center'">
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="metric-strip">
+<div class="container">
+    <div class="row g-4 text-center">
+        <div class="col-md-3 metric">
+            <h2>24/7/365</h2>
+            <p>Active Telemetry Scraping</p>
+        </div>
+        <div class="col-md-3 metric">
+            <h2>&lt; 50ms</h2>
+            <p>Geofence Polygon Validation</p>
+        </div>
+        <div class="col-md-3 metric">
+            <h2>100%</h2>
+            <p>Immutable Forensic Audit Logs</p>
+        </div>
+        <div class="col-md-3 metric">
+            <h2>Automated</h2>
+            <p>SLA Hazard Notification</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="features" class="section-padding">
+<div class="container">
+    <div class="text-center mb-5 max-width-600 mx-auto">
+        <h2 class="section-title mb-3">Architected for Operational Accountability</h2>
+        <p class="text-secondary fs-5">Eliminate coverage gaps and contractual compliance failures with deterministic data monitoring loops.</p>
+    </div>
+    
+    <div class="row g-4 mt-2">
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-badge">01</div>
+                <h4 class="fw-bold mb-3">Real-Time Centralized Console</h4>
+                <p class="text-secondary mb-0">Aggregate active officer telemetry, regional guard allocation metrics, and chronological event feeds within a single unified administrative node.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-badge">02</div>
+                <h4 class="fw-bold mb-3">Automated Lifecycle Alerts</h4>
+                <p class="text-secondary mb-3">Immediate computational notification engine tracking mission-critical operational breaches:</p>
+                <ul class="text-secondary ps-3 mb-0" style="font-size: 0.95rem;">
+                    <li class="mb-1">Unallocated / Missed Shift Windows</li>
+                    <li class="mb-1">Late Arrivals & Early Departures</li>
+                    <li class="mb-0">Geofence Perimeter Infractions</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-badge">03</div>
+                <h4 class="fw-bold mb-3">Forensic Audit Ledgers</h4>
+                <p class="text-secondary mb-0">Every triggered systemic incident maps securely across strict status boundaries: <strong>OPEN &rarr; ACKNOWLEDGED &rarr; RESOLVED</strong> with full timestamp and manager accountabiity auditing.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="section-padding" style="background-color: #0E1322; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+<div class="container">
+    <div class="row align-items-center g-5">
+        <div class="col-lg-5">
+            <h2 class="section-title mb-4">Built for Demanding Guard Environments</h2>
+            <p class="text-secondary mb-4 fs-5" style="line-height: 1.7;">
+                Most security providers track compliance after a client files a contract complaint. ProofLog reverses this vulnerability by introducing immediate structural alarms at the edge.
+            </p>
+            <div class="p-3 border-start border-primary border-3 bg-dark bg-opacity-20 rounded-end mb-4">
+                <p class="text-light mb-0 fw-medium">Operational Sectors Addressed:</p>
+                <span class="badge bg-secondary m-1 mt-2 px-2 py-1">Security Agencies</span>
+                <span class="badge bg-secondary m-1 mt-2 px-2 py-1">Property Management</span>
+                <span class="badge bg-secondary m-1 mt-2 px-2 py-1">Construction Assets</span>
+                <span class="badge bg-secondary m-1 mt-2 px-2 py-1">Mobile Patrol Ops</span>
             </div>
         </div>
         
-        <div class="mockup-container">
-            <div class="mockup-header">
-                <div class="window-dots">
-                    <div class="dot red"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
+        <div class="col-lg-7">
+            <div id="telemetryCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#telemetryCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                    <button type="button" data-bs-target="#telemetryCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#telemetryCarousel" data-bs-slide-to="2"></button>
                 </div>
-                <div class="mockup-badge">
-                    <span>CRITICAL ALARM DETECTED</span>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="alerts-missed.png" class="d-block w-100" alt="SLA Exception Management" onerror="this.src='https://placehold.co/700x440/151b2c/ffffff?text=Exception:+MISSED_SHIFT+ALARM'">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-90 border border-secondary rounded p-3 mb-3 mx-4 text-start">
+                            <h5 class="text-danger fw-bold">SLA Exception Management</h5>
+                            <p class="small text-secondary mb-0">Flags unassigned operational schedules using cron evaluation models before clients notice a gap.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="alerts-geofence.png" class="d-block w-100" alt="Deterministic Geofencing" onerror="this.src='https://placehold.co/700x440/151b2c/ffffff?text=Exception:+GEOFENCE_VIOLATION'">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-90 border border-secondary rounded p-3 mb-3 mx-4 text-start">
+                            <h5 class="text-warning fw-bold">Geofence Boundary Violations</h5>
+                            <p class="small text-secondary mb-0">Triggers immediate alerts when guards exceed site radius parameters via Haversine mathematical filtering.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="shifts-History.png" class="d-block w-100" alt="ShiftTimeContext Integration" onerror="this.src='https://placehold.co/700x440/151b2c/ffffff?text=Exception:+LATE_CLOCK_IN'">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-90 border border-secondary rounded p-3 mb-3 mx-4 text-start">
+                            <h5 class="text-info fw-bold">Temporal Context Integration</h5>
+                            <p class="small text-secondary mb-0">Normalizes shift timestamps natively utilizing Java ZoneId mapping to account for multi-timezone deployments.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="mockup-data-row">
-                <div class="mockup-label">Engine Triage State</div>
-                <div class="mockup-value" style="color: var(--alert-red);">OUTSIDE_GEOFENCE → [STATUS: OPEN]</div>
-            </div>
-            <div class="mockup-data-row">
-                <div class="mockup-label">Temporal Context Anchoring</div>
-                <div class="mockup-value">ShiftTimeContext: Normalized Local Business Time</div>
-            </div>
-            <div class="mockup-data-row">
-                <div class="mockup-label">Data Forensic Immutability</div>
-                <div class="mockup-value">Snapshot Committed (Schedule Decoupled)</div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#telemetryCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#telemetryCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
             </div>
         </div>
-    </section>
+    </div>
+</div>
+</section>
 
-    <section class="features" id="features">
-        <div class="section-lead">
-            <h2>Architected for Mission-Critical Accuracy</h2>
-            <p>Unlike generic clock-in software, ProofLog is designed at the database and network layer to capture high-fidelity forensic data hooks.</p>
+<section id="architecture" class="section-padding">
+<div class="container">
+    <div class="text-center mb-5">
+        <h2 class="section-title mb-3">Enterprise Cloud Architecture Stack</h2>
+        <p class="text-secondary fs-5 mx-auto max-width-600">Built using scalable decoupled layers ensuring fault tolerance under high-volume transaction load.</p>
+    </div>
+    
+    <div class="row text-center g-3 mb-5 fw-bold">
+        <div class="col-6 col-md-2"><div class="p-3 border border-secondary rounded bg-dark bg-opacity-10 text-light">Java 17</div></div>
+        <div class="col-6 col-md-2"><div class="p-3 border border-secondary rounded bg-dark bg-opacity-10 text-light">Spring Boot</div></div>
+        <div class="col-6 col-md-2"><div class="p-3 border border-secondary rounded bg-dark bg-opacity-10 text-light">PostgreSQL</div></div>
+        <div class="col-6 col-md-2"><div class="p-3 border border-secondary rounded bg-dark bg-opacity-10 text-light">Angular</div></div>
+        <div class="col-6 col-md-2"><div class="p-3 border border-secondary rounded bg-dark bg-opacity-10 text-light">Docker</div></div>
+        <div class="col-6 col-md-2"><div class="p-3 border border-secondary rounded bg-dark bg-opacity-10 text-light">GitHub Actions</div></div>
+    </div>
+    
+    <div class="row g-4 mt-2">
+        <div class="col-lg-6">
+            <div class="p-4 rounded-4 border border-secondary h-100 bg-dark bg-opacity-10">
+                <h5 class="text-primary fw-bold mb-3">&bull; Core Backend Engineering Stack</h5>
+                <ul class="text-secondary lh-lg mb-0">
+                    <li><strong>Spring Boot API Core:</strong> Houses RESTful data layer endpoints using modular MVC patterns.</li>
+                    <li><strong>Spring Security Network Layer:</strong> Enforces stateless JWT authorization structures with Role-Based Access Controls (RBAC).</li>
+                    <li><strong>Relational Data Ledger:</strong> Implements PostgreSQL with Hibernate optimization for low-latency telemetry index querying.</li>
+                </ul>
+            </div>
         </div>
-        
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="feature-icon">TZ</div>
-                <h3>ShiftTimeContext Engine</h3>
-                <p>Decouples processing from native server clocks. Evaluates multi-region localized parameters through explicit ZoneId mapping, eliminating cross-midnight and DST date errors completely.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">GF</div>
-                <h3>Deterministic Geofencing</h3>
-                <p>Calculates dynamic distance vectors via high-frequency telemetry tracking streams against site boundary parameters, offloading evaluations directly to optimized relational constraints.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">SM</div>
-                <h3>Atomic Alert States</h3>
-                <p>Enforces a clean state machine (Open → Acknowledged → Resolved) backed by a PostgreSQL partial unique index to isolate race conditions and eliminate duplicate alert fatigue.</p>
+        <div class="col-lg-6">
+            <div class="p-4 rounded-4 border border-secondary h-100 bg-dark bg-opacity-10">
+                <h5 class="text-success fw-bold mb-3">&bull; Client Application Interface Stack</h5>
+                <ul class="text-secondary lh-lg mb-0">
+                    <li><strong>Angular Component Architecture:</strong> Highly structured single-page architecture executing reactive state data binding.</li>
+                    <li><strong>Responsive Flex Grids:</strong> Built utilizing Bootstrap layout paradigms to enable mobile device triage adaptability.</li>
+                    <li><strong>Capacitor Integration Engine:</strong> Mobile-ready architecture shell mapping core tracking dependencies seamlessly.</li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+</div>
+</section>
 
-    <footer>
-        <p>&copy; 2026 Sentry Steps LLC. All rights reserved. Engineering by Ahmed Alweimine.</p>
-    </footer>
+<section id="contact" class="section-padding style" style="background-gradient: linear-gradient(to bottom, var(--bg-main), #06080E);">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="form-card shadow-lg">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold text-light mb-2">Request Operational Demo</h2>
+                    <p class="text-secondary">Provide details regarding your enterprise deployment scale to initialize a sandbox environment.</p>
+                </div>
+                
+                <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label text-secondary small fw-bold text-uppercase">Full Name</label>
+                            <input type="text" name="name" class="form-control form-control-pro" placeholder="Ahmed Alweimine" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-secondary small fw-bold text-uppercase">Corporate Email</label>
+                            <input type="email" name="email" class="form-control form-control-pro" placeholder="operations@company.com" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label text-secondary small fw-bold text-uppercase">Company Name</label>
+                            <input type="text" name="company" class="form-control form-control-pro" placeholder="Sentry Steps LLC" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label text-secondary small fw-bold text-uppercase">Operational Fleet Scale (Estimated Guards)</label>
+                            <select name="scale" class="form-select form-control-pro" required>
+                                <option value="" disabled selected>Select active operational volume...</option>
+                                <option value="1-50">1 - 50 Officers</option>
+                                <option value="51-200">51 - 200 Officers</option>
+                                <option value="201+">201+ Enterprise Fleet Scale</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label text-secondary small fw-bold text-uppercase">Custom Operational Requirements</label>
+                            <textarea name="message" rows="4" class="form-control form-control-pro" placeholder="Outline any multi-region or specific geofencing constraint criteria required for your assets..."></textarea>
+                        </div>
+                        <div class="col-md-12 mt-4">
+                            <button type="submit" class="btn btn-primary-pro w-100 py-3 fs-5">Initialize Demo Pipeline</button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="container">
+    <div class="row g-4 align-items-center text-center text-md-start">
+        <div class="col-md-6">
+            <h4 class="text-light fw-bold mb-2">PROOFLOG</h4>
+            <p class="small mb-0 text-secondary">A product of Sentry Steps LLC.<br>Engineered in Pittsburgh, Pennsylvania.</p>
+        </div>
+        <div class="col-md-6 text-md-end text-center">
+            <p class="small mb-1 text-light fw-medium">Operations Terminal: <a href="mailto:ahmed@sentrysteps.com" class="text-decoration-none text-primary">ahmed@sentrysteps.com</a></p>
+            <p class="small mb-3 text-light fw-medium">Corporate Portal: <a href="http://www.sentrysteps.com" class="text-decoration-none text-success">www.sentrysteps.com</a></p>
+            <span class="small d-block text-secondary">&copy; 2026 Sentry Steps LLC. All rights reserved. Code artifacts verified via Production CI/CD pipelines.</span>
+        </div>
+    </div>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
